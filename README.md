@@ -1,4 +1,9 @@
 <div align="center">
+  <img src="assets/mumcare-banner.svg" alt="MumCare - Maternal Care Intelligence Platform" width="100%">
+</div>
+
+<br>
+<div align="center">
 
 # 🩷 MumCare
 
