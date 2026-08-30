@@ -617,11 +617,7 @@ It is to make healthcare **more accessible, continuous, organized, and human-cen
 
 ---
 
-# 👥 Team HealthNova
-
-Developed at:
-
-**VIT Bhopal University**
+Developed by: Sanchita Yadav 
 
 Theme:
 
