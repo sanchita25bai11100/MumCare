@@ -15,6 +15,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 from app.risk_engine import assess_symptom
+from app.mood_engine import assess_mood
 
 
 app = FastAPI(
@@ -78,53 +79,17 @@ def symptom_assessment(request: SymptomRequest):
 @app.post("/api/v1/mood/check-in")
 def mood_check_in(request: MoodRequest):
     """
-    Provide a simple supportive response based on a
-    user's emotional check-in.
+    Process a mood check-in and return supportive guidance.
     """
 
-    mood = request.mood.lower().strip()
-
-    if any(word in mood for word in ["sad", "lonely", "alone", "upset"]):
-        response = (
-            "It sounds like you may be going through a difficult moment. "
-            "You do not have to handle everything alone. Consider reaching "
-            "out to someone you trust or a qualified mental-health professional."
-        )
-
-        support_level = "additional_support_recommended"
-
-    elif any(word in mood for word in ["anxious", "anxiety", "worried", "stress"]):
-        response = (
-            "It is understandable to feel worried or stressed. "
-            "Consider taking a short pause, practicing slow breathing, "
-            "and speaking with someone you trust if these feelings continue."
-        )
-
-        support_level = "supportive_check_in"
-
-    elif any(word in mood for word in ["happy", "good", "great", "calm"]):
-        response = (
-            "That is wonderful to hear. Keep checking in with yourself "
-            "and continue activities that support your well-being."
-        )
-
-        support_level = "positive"
-
-    else:
-        response = (
-            "Thank you for checking in. Your emotional well-being matters. "
-            "You can continue monitoring how you feel and seek support "
-            "whenever you need it."
-        )
-
-        support_level = "general_support"
+    assessment = assess_mood(request.mood)
 
     return {
         "reported_mood": request.mood,
-        "support_level": support_level,
-        "response": response,
+        "support_level": assessment.level.value,
+        "response": assessment.response,
         "medical_disclaimer": (
-            "This feature provides general emotional support and "
-            "does not diagnose mental-health conditions."
+            "This feature provides general emotional support "
+            "and does not diagnose mental-health conditions."
         ),
     }
