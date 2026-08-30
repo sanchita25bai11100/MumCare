@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MumCare | Maternal Intelligence Platform</title>
+
+    <meta
+        name="description"
+        content="MumCare is an AI-assisted maternal support and care navigation platform."
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="topbar">
+
+        <div class="brand">
+            <div class="brand-mark">M</div>
+
+            <div>
+                <h1>MumCare</h1>
+                <span>Maternal Intelligence Platform</span>
+            </div>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            Care system online
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="dashboard">
+
+        <!-- Welcome -->
+
+        <section class="welcome">
+
+            <div>
+                <p class="eyebrow">PERSONAL CARE SPACE</p>
+
+                <h2>
+                    Your care journey,
+                    <span>supported.</span>
+                </h2>
+
+                <p class="subtitle">
+                    MumCare brings health guidance, emotional support,
+                    reminders and care navigation into one intelligent space.
+                </p>
+            </div>
+
+            <div class="journey-card">
+
+                <div class="journey-top">
+                    <span>CARE JOURNEY</span>
+                    <strong>Active</strong>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-fill"></div>
+                </div>
+
+                <div class="journey-info">
+                    <span>Current stage</span>
+                    <strong>Personalized care</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <section class="section">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">INTELLIGENCE CENTER</p>
+                    <h3>How can MumCare help?</h3>
+                </div>
+            </div>
+
+            <div class="feature-grid">
+
+                <button class="feature-card"
+                        onclick="openModule('symptoms')">
+
+                    <div class="icon">⚕</div>
+
+                    <div>
+                        <h4>Symptom Guidance</h4>
+                        <p>
+                            Understand when a symptom may require
+                            professional attention.
+                        </p>
+                    </div>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+
+                <button class="feature-card"
+                        onclick="openModule('mood')">
+
+                    <div class="icon">♡</div>
+
+                    <div>
+                        <h4>Mood Check-in</h4>
+                        <p>
+                            Check in with your emotional well-being
+                            and receive supportive guidance.
+                        </p>
+                    </div>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+
+                <button class="feature-card"
+                        onclick="openModule('documents')">
+
+                    <div class="icon">▣</div>
+
+                    <div>
+                        <h4>Health Documents</h4>
+                        <p>
+                            Keep important health information
+                            organized in one place.
+                        </p>
+                    </div>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+
+                <button class="feature-card"
+                        onclick="openModule('reminders')">
+
+                    <div class="icon">◷</div>
+
+                    <div>
+                        <h4>Care Reminders</h4>
+                        <p>
+                            Keep track of appointments, tests
+                            and important care activities.
+                        </p>
+                    </div>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= AI ASSISTANT ================= -->
+
+        <section class="assistant">
+
+            <div class="assistant-header">
+
+                <div class="ai-avatar">
+                    ✦
+                </div>
+
+                <div>
+                    <p class="eyebrow">MUMCARE INTELLIGENCE</p>
+                    <h3>Care Assistant</h3>
+                </div>
+
+                <span class="ai-badge">
+                    AI-ASSISTED
+                </span>
+
+            </div>
+
+
+            <div class="assistant-body">
+
+                <p>
+                    Tell MumCare what is on your mind.
+                    You can describe a symptom, ask about your
+                    care routine, or simply check in.
+                </p>
+
+                <div class="assistant-input">
+
+                    <input
+                        id="assistantInput"
+                        type="text"
+                        placeholder="How are you feeling today?"
+                    >
+
+                    <button onclick="sendAssistantMessage()">
+                        Ask MumCare →
+                    </button>
+
+                </div>
+
+                <div id="assistantResponse"
+                     class="assistant-response hidden">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TODAY ================= -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <div>
+                    <p class="eyebrow">TODAY</p>
+                    <h3>Your care overview</h3>
+                </div>
+
+            </div>
+
+
+            <div class="overview-grid">
+
+                <div class="overview-card">
+
+                    <span class="overview-icon">♡</span>
+
+                    <div>
+                        <span class="label">MOOD</span>
+                        <strong id="moodStatus">
+                            Not checked in
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="overview-card">
+
+                    <span class="overview-icon">◷</span>
+
+                    <div>
+                        <span class="label">REMINDERS</span>
+                        <strong>3 upcoming</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="overview-card">
+
+                    <span class="overview-icon">▣</span>
+
+                    <div>
+                        <span class="label">DOCUMENTS</span>
+                        <strong>Organized</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SAFETY ================= -->
+
+        <section class="safety">
+
+            <div class="safety-icon">!</div>
+
+            <div>
+
+                <strong>Important safety notice</strong>
+
+                <p>
+                    MumCare provides AI-assisted information and
+                    general support. It does not diagnose conditions,
+                    prescribe medication, or replace qualified
+                    healthcare professionals.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= MODULE MODAL ================= -->
+
+    <div id="moduleModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <button
+                class="close"
+                onclick="closeModule()">
+                ×
+            </button>
+
+            <div id="modalContent"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
+</html>
